@@ -155,8 +155,9 @@ export default function Home() {
       gsearch.id = "gsearch";
       gsearch.src = "https://cse.google.com/cse.js?cx=172fb6c51d1564f6e";
       gsearch.async = true;
+      const salt = (Math.random() * 1000).toString();
       body.appendChild(gsearch);
-      setLastSearchedItem(searchString);
+      setLastSearchedItem(searchString + salt);
       router.push(`/`);
     }
   }, [searchParams, router]);
