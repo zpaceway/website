@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 
 const jobs = [
@@ -137,8 +141,32 @@ const jobs = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [lastSearchedItem, setLastSearchedItem] = useState("");
+
+  useEffect(() => {
+    const searchString = searchParams.get("q");
+    if (searchString) {
+      const prevSearch = document.getElementById("gsearch");
+      prevSearch?.remove?.();
+      const body = document.body;
+      const gsearch = document.createElement("script");
+      gsearch.id = "gsearch";
+      gsearch.src = "https://cse.google.com/cse.js?cx=172fb6c51d1564f6e";
+      gsearch.async = true;
+      body.appendChild(gsearch);
+      setLastSearchedItem(searchString);
+      router.push(`/`);
+    }
+  }, [searchParams, router]);
+
   return (
     <div className="w-full h-full bg-zinc-900 text-white flex justify-center items-center p-8 font-sans">
+      <div key={`query-${lastSearchedItem}`} className="fixed z-20">
+        <div className="gcse-searchresults-only"></div>
+      </div>
+
       <div className="max-w-5xl flex flex-col w-full gap-32">
         <div className="flex w-full text-2xl">
           <div className="flex items-center gap-4">
@@ -157,13 +185,14 @@ export default function Home() {
         </div>
         <div className="flex items-center flex-wrap gap-12">
           <div className="relative w-full max-w-sm aspect-square overflow-hidden rounded-full">
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60"></div>
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-40"></div>
             <Image
               src="/picture.jpeg"
               width={600}
               height={600}
               alt="profile-picture"
               className="object-contain"
+              priority
             />
           </div>
           <div className="text-6xl ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24">
@@ -223,7 +252,7 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               {jobs.map((job) => (
                 <div key={job.company} className="flex gap-2">
-                  <div className="rounded-full grow-0 shrink-0 w-16 h-16 overflow-hidden">
+                  <div className="rounded-full grow-0 shrink-0 w-12 h-12 overflow-hidden">
                     <Image
                       width={200}
                       height={200}
@@ -243,7 +272,10 @@ export default function Home() {
                       {job.technologies.map((technology) => (
                         <button
                           key={`${job.company}-${technology}`}
-                          className="bg-rose-500 px-2 hover:bg-rose-600"
+                          onClick={() => {
+                            router.push(`/?q=${technology}`);
+                          }}
+                          className="text-sm px-2 text-white border-white border hover:bg-white hover:text-gray-500 rounded-sm font-mono"
                         >
                           {technology}
                         </button>
