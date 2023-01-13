@@ -2,8 +2,12 @@
 
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { FcMusic } from "react-icons/fc";
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const jobs = [
   {
@@ -144,6 +148,19 @@ export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [lastSearchedItem, setLastSearchedItem] = useState("");
+  const [showYoutubeBubble, setShowYoutubeBubble] = useState(false);
+  const onScroll = useRef<() => void>();
+
+  useEffect(() => {
+    onScroll.current &&
+      document.removeEventListener("scroll", onScroll.current);
+
+    onScroll.current = () => {
+      setShowYoutubeBubble(false);
+    };
+
+    document.addEventListener("scroll", onScroll.current);
+  }, []);
 
   useEffect(() => {
     const searchString = searchParams.get("q");
@@ -163,11 +180,33 @@ export default function Home() {
 
   return (
     <div className="w-full h-full bg-zinc-900 text-white flex justify-center items-center p-8 font-sans">
-      <div key={`query-${lastSearchedItem}`} className="fixed z-20">
+      <div key={`query-${lastSearchedItem}`} className="fixed z-30">
         <div className="gcse-searchresults-only"></div>
       </div>
 
       <div className="max-w-5xl flex flex-col w-full gap-32">
+        <div
+          className={`fixed overflow-hidden bottom-4 left-4 w-60 h-40 z-20 ${
+            showYoutubeBubble ? "block" : "hidden"
+          }`}
+        >
+          <ReactPlayer
+            width={"100%"}
+            height={"100%"}
+            className="rounded-full"
+            url="https://www.youtube.com/watch?v=jfKfPfyJRdk"
+          />
+        </div>
+
+        {!showYoutubeBubble && (
+          <div
+            className="fixed overflow-hidden bottom-4 left-4 bg-zinc-200 shadow-md shadow-zinc-700 rounded-full z-20 text-6xl"
+            onClick={() => setShowYoutubeBubble(true)}
+          >
+            <FcMusic />
+          </div>
+        )}
+
         <div className="flex w-full text-2xl">
           <div className="flex items-center gap-4">
             <div className="font-light text-gray-100">
