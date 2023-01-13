@@ -158,7 +158,6 @@ export default function Home() {
       const salt = (Math.random() * 1000).toString();
       body.appendChild(gsearch);
       setLastSearchedItem(searchString + salt);
-      router.push(`/`);
     }
   }, [searchParams, router]);
 
