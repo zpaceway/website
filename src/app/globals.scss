@@ -8,6 +8,29 @@
 }
 
 .gsc-control-cse.gsc-control-cse-en {
-  background: transparent;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+}
+
+.gsc-modal-background-image {
+  background-color: black !important;
+  opacity: 0.7 !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 100vmax;
+}
+
+::-webkit-scrollbar-track {
+  background: #868686;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(80, 80, 80);
+  border-radius: 100vmax;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(62, 62, 62);
 }

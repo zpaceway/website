@@ -4,35 +4,18 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
-import { FcMusic } from "react-icons/fc";
-import dynamic from "next/dynamic";
-import jobs from "@/data/jobs";
-import Debouncer from "@/utils/Debouncer";
 
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+import jobs from "@/data/jobs";
+import TechnologyButton from "@/components/TechnologyButton";
+import FloatingMenu from "@/components/FloatingMenu";
 
 export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [lastSearchedItem, setLastSearchedItem] = useState("");
-  const [showYoutubePlayer, setShowYoutubePlayer] = useState(false);
-  const onScroll = useRef<() => void>();
-  const debouncer = useRef(new Debouncer());
+  const [technologySearchWithSalt, setTechnologySearchWithSalt] = useState("");
+  const [technologyIdLoading, setTechnologyIdLoading] = useState("");
 
-  useEffect(() => {
-    onScroll.current &&
-      document.removeEventListener("scroll", onScroll.current);
-
-    if (showYoutubePlayer) {
-      onScroll.current = () => {
-        debouncer.current.exec(() => {
-          setShowYoutubePlayer(false);
-        });
-      };
-
-      document.addEventListener("scroll", onScroll.current);
-    }
-  }, [showYoutubePlayer]);
+  const searchBoxInterval = useRef<NodeJS.Timer>();
 
   useEffect(() => {
     const searchString = searchParams.get("q");
@@ -44,54 +27,59 @@ export default function Home() {
       gsearch.id = "gsearch";
       gsearch.src = "https://cse.google.com/cse.js?cx=172fb6c51d1564f6e";
       gsearch.async = true;
-      const salt = (Math.random() * 1000).toString();
       body.appendChild(gsearch);
-      setLastSearchedItem(searchString + salt);
+      const salt = (Math.random() * 1000).toString();
+      setTechnologySearchWithSalt(`${searchString}-${salt}`);
     }
   }, [searchParams, router]);
 
+  useEffect(() => {
+    clearInterval(searchBoxInterval.current);
+
+    if (technologyIdLoading) {
+      searchBoxInterval.current = setInterval(() => {
+        const searchBoxVisible = document.querySelector(
+          ".gsc-resultsbox-visible"
+        );
+        if (searchBoxVisible) {
+          clearInterval(searchBoxInterval.current);
+          setTechnologyIdLoading("");
+          router.push("/");
+        }
+      }, 250);
+    }
+
+    return () => {
+      clearInterval(searchBoxInterval.current);
+    };
+  }, [router, technologyIdLoading]);
+
   return (
-    <div className="w-full h-full bg-zinc-900 text-white flex justify-center items-center p-8 font-sans">
-      <div key={`query-${lastSearchedItem}`} className="fixed z-30">
+    <div className="w-full h-full bg-zinc-900 text-white flex justify-center items-center p-4 font-sans">
+      <div key={`query-${technologySearchWithSalt}`} className="fixed z-30">
         <div className="gcse-searchresults-only"></div>
       </div>
+      <FloatingMenu />
 
       <div className="max-w-5xl flex flex-col w-full gap-32">
-        <div
-          className="fixed flex justify-center items-end overflow-hidden bottom-0 left-0 p-8 right-0 pointer-events-none z-20"
-          onClick={() => setShowYoutubePlayer(true)}
-        >
-          <div className="w-full max-w-5xl flex justify-end">
-            {!showYoutubePlayer && (
-              <div className="bg-white rounded-full pointer-events-auto shadow-md shadow-zinc-700 text-5xl">
-                <FcMusic />
-              </div>
-            )}
-            <div
-              className={`overflow-hidden w-60 h-40 z-20 pointer-events-auto ${
-                showYoutubePlayer ? "block" : "hidden"
-              }`}
-            >
-              <ReactPlayer
-                width={"100%"}
-                height={"100%"}
-                className="rounded-full"
-                url="https://www.youtube.com/watch?v=jfKfPfyJRdk"
-              />
-            </div>
-          </div>
-        </div>
-
         <div className="flex w-full text-2xl">
           <div className="flex items-center gap-4 flex-wrap">
             <div className="font-light text-gray-100">
               alexandro<span className="font-bold text-rose-400">TAPIA</span>
             </div>
             <div className="flex gap-2">
-              <div>
+              <div
+                className="cursor-pointer"
+                onClick={() => window.open("https://github.com/zpaceway")}
+              >
                 <AiFillGithub />
               </div>
-              <div>
+              <div
+                className="cursor-pointer"
+                onClick={() =>
+                  window.open("https://www.linkedin.com/in/alexandro591/")
+                }
+              >
                 <AiFillLinkedin />
               </div>
             </div>
@@ -183,17 +171,21 @@ export default function Home() {
                       <div>{job.description}</div>
                     </div>
                     <div className="flex gap-2 flex-wrap">
-                      {job.technologies.map((technology) => (
-                        <button
-                          key={`${job.company}-${technology}`}
-                          onClick={() => {
-                            router.push(`/?q=${technology}`);
-                          }}
-                          className="text-sm px-2 text-white border-white border hover:bg-white hover:text-gray-500 rounded-sm font-mono"
-                        >
-                          {technology}
-                        </button>
-                      ))}
+                      {job.technologies.map((technology) => {
+                        const technologyId = `${job.company}-${technology}`;
+                        return (
+                          <TechnologyButton
+                            key={technologyId}
+                            loading={technologyIdLoading === technologyId}
+                            onClick={async () => {
+                              setTechnologyIdLoading(technologyId);
+                              router.push(`/?q=${technology}`);
+                            }}
+                          >
+                            {technology}
+                          </TechnologyButton>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
