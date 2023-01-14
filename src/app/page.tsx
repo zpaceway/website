@@ -148,7 +148,7 @@ export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [lastSearchedItem, setLastSearchedItem] = useState("");
-  const [showYoutubeBubble, setShowYoutubeBubble] = useState(false);
+  const [showYoutubePlayer, setShowYoutubePlayer] = useState(false);
   const onScroll = useRef<() => void>();
 
   useEffect(() => {
@@ -156,7 +156,7 @@ export default function Home() {
       document.removeEventListener("scroll", onScroll.current);
 
     onScroll.current = () => {
-      setShowYoutubeBubble(false);
+      setShowYoutubePlayer(false);
     };
 
     document.addEventListener("scroll", onScroll.current);
@@ -186,26 +186,29 @@ export default function Home() {
 
       <div className="max-w-5xl flex flex-col w-full gap-32">
         <div
-          className={`fixed overflow-hidden bottom-4 left-4 w-60 h-40 z-20 ${
-            showYoutubeBubble ? "block" : "hidden"
-          }`}
+          className="fixed flex justify-center items-end overflow-hidden bottom-0 left-0 p-8 right-0 pointer-events-none z-20"
+          onClick={() => setShowYoutubePlayer(true)}
         >
-          <ReactPlayer
-            width={"100%"}
-            height={"100%"}
-            className="rounded-full"
-            url="https://www.youtube.com/watch?v=jfKfPfyJRdk"
-          />
-        </div>
-
-        {!showYoutubeBubble && (
-          <div
-            className="fixed overflow-hidden bottom-4 left-4 bg-zinc-200 shadow-md shadow-zinc-700 rounded-full z-20 text-6xl"
-            onClick={() => setShowYoutubeBubble(true)}
-          >
-            <FcMusic />
+          <div className="w-full max-w-5xl flex justify-end">
+            {!showYoutubePlayer && (
+              <div className="bg-white rounded-full pointer-events-auto shadow-md shadow-zinc-700 text-5xl">
+                <FcMusic />
+              </div>
+            )}
+            <div
+              className={`overflow-hidden w-60 h-40 z-20 pointer-events-auto ${
+                showYoutubePlayer ? "block" : "hidden"
+              }`}
+            >
+              <ReactPlayer
+                width={"100%"}
+                height={"100%"}
+                className="rounded-full"
+                url="https://www.youtube.com/watch?v=jfKfPfyJRdk"
+              />
+            </div>
           </div>
-        )}
+        </div>
 
         <div className="flex w-full text-2xl">
           <div className="flex items-center gap-4">
