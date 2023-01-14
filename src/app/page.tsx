@@ -211,7 +211,7 @@ export default function Home() {
         </div>
 
         <div className="flex w-full text-2xl">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <div className="font-light text-gray-100">
               alexandro<span className="font-bold text-rose-400">TAPIA</span>
             </div>
@@ -237,7 +237,7 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="text-6xl ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24">
+          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24 xs:text-6xl">
             <div>Hi there! I am a</div>
             <div>
               <span className="text-rose-400">full stack </span>
