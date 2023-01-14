@@ -37,10 +37,10 @@ const FloatingMenu = () => {
 
   return (
     <div className="fixed flex justify-center items-end overflow-hidden bottom-0 left-0 p-4 right-0 pointer-events-none z-20">
-      <div className="w-full max-w-5xl flex flex-col items-end gap-4">
+      <div className="w-full max-w-5xl flex flex-col items-end gap-2">
         {!showYoutubePlayer && (
           <>
-            <div className="cursor-pointer p-1 text-violet-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-12">
+            <div className="cursor-pointer p-1 text-violet-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6">
               <div className="relative">
                 <FaCalendarAlt />
                 <div className="absolute bottom-0 left-0 right-0 top-0 opacity-0">
@@ -56,19 +56,19 @@ const FloatingMenu = () => {
               onClick={() =>
                 window.open("https://www.facebook.com/alexandrotapiaflores")
               }
-              className="cursor-pointer p-1 text-blue-500 bg-white rounded-full pointer-events-auto text-4xl hover:rotate-12"
+              className="cursor-pointer p-1 text-blue-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6"
             >
               <BsFacebook />
             </div>
             <div
               onClick={() => window.open("https://wa.me/593998775709")}
-              className="cursor-pointer p-1 text-green-500 bg-white rounded-full pointer-events-auto text-4xl hover:rotate-12"
+              className="cursor-pointer p-1 text-green-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6"
             >
               <IoLogoWhatsapp />
             </div>
             <div
               onClick={() => setShowYoutubePlayer(true)}
-              className="cursor-pointer p-1 text-red-500 bg-white rounded-full pointer-events-auto text-4xl hover:rotate-12"
+              className="cursor-pointer p-1 text-red-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6"
             >
               <SiYoutubemusic />
             </div>
