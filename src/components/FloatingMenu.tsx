@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { SiYoutubemusic } from "react-icons/si";
 import { BsFacebook } from "react-icons/bs";
+import { FaCalendarAlt } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import { PopupButton } from "react-calendly";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
@@ -38,6 +40,18 @@ const FloatingMenu = () => {
       <div className="w-full max-w-5xl flex flex-col items-end gap-4">
         {!showYoutubePlayer && (
           <>
+            <div className="cursor-pointer p-1 text-violet-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-12">
+              <div className="relative">
+                <FaCalendarAlt />
+                <div className="absolute bottom-0 left-0 right-0 top-0 opacity-0">
+                  <PopupButton
+                    url="https://calendly.com/zpaceway/30min"
+                    rootElement={document.querySelector("body")!}
+                    text="ca"
+                  />
+                </div>
+              </div>
+            </div>
             <div
               onClick={() =>
                 window.open("https://www.facebook.com/alexandrotapiaflores")
