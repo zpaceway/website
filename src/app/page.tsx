@@ -71,18 +71,21 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center flex-wrap gap-12">
-          <div className="relative w-full max-w-sm aspect-square overflow-hidden rounded-full">
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-30"></div>
+          <div className="relative w-full max-w-sm aspect-square rounded-full">
+            <div className="absolute w-[16%] h-[16%] bg-lime-400 -top-[8%] left-[8%] rounded-full"></div>
+            <div className="absolute w-[12%] h-[12%] bg-lime-400 -top-[11.5%] left-[26%] rounded-full"></div>
+            <div className="absolute w-[9%] h-[9%] bg-lime-400 -top-[11%] left-[41%] rounded-full"></div>
             <Image
               src="/picture.jpeg"
               width={600}
               height={600}
               alt="profile-picture"
-              className="object-contain"
+              className="absolute object-cover aspect-square rounded-full"
               priority
             />
+            <div className="absolute w-full h-full bg-black bg-opacity-50 rounded-full"></div>
           </div>
-          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24 xs:text-6xl max-w-[40rem]">
+          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-40 lg:mt-0 lg:-ml-32 xs:text-6xl max-w-[40rem]">
             Hi there! I am a <span className="text-lime-400">full stack </span>
             developer
           </div>
