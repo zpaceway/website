@@ -98,12 +98,9 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24 xs:text-6xl">
-            <div>Hi there! I am a</div>
-            <div>
-              <span className="text-rose-400">full stack </span>
-              developer
-            </div>
+          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24 xs:text-6xl max-w-[40rem]">
+            Hi there! I am a <span className="text-rose-400">full stack </span>
+            developer
           </div>
         </div>
         <ZpacewaySection title="Introduction" align="center" fullWidth>
