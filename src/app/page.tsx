@@ -52,7 +52,7 @@ export default function Home() {
     notifyNewVisitor();
     setIsPageLoading(false);
     if (!particlesInitialized.current) {
-      const Particles = require("particlesjs");
+      const Particles = require("./particles");
       Particles.init({
         maxParticles: 2000,
         selector: ".background",
