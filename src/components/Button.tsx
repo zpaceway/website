@@ -9,7 +9,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({ children, loading, type }: Props) => {
   return (
     <button
-      className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 relative flex items-center justify-center rounded focus:outline-none"
+      className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 relative flex items-center justify-center rounded focus:outline-none"
       type={type}
     >
       <div className={`${loading ? "opacity-0" : "opacity-1"}`}>{children}</div>

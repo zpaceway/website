@@ -68,7 +68,7 @@ const useHomeSections = () => {
           school in Visual Basic and I simply feel in love with coding. In the
           university my passion for technology lead me to study Mechatronics
           Engineering in{" "}
-          <span className="text-lime-400 font-bold">
+          <span className="text-emerald-400 font-bold">
             Universidad de las Fuerzas Armadas
           </span>{" "}
           in Ecuador. While studying I had the chance of working part time as a
@@ -107,7 +107,7 @@ const useHomeSections = () => {
                   <div>
                     <div className="font-bold text-xl">
                       {job.company}
-                      <span className="text-lime-400"> {job.period}</span>
+                      <span className="text-emerald-400"> {job.period}</span>
                     </div>
                     <div>{job.description}</div>
                   </div>
@@ -144,8 +144,8 @@ const useHomeSections = () => {
           <div>
             Feel free to contact me and {"let's"} do great things together! You
             can also schedule a{" "}
-            <span className="text-lime-400 font-bold">meeting</span> by clicking
-            on the calendar in the floating menu on the right.
+            <span className="text-emerald-400 font-bold">meeting</span> by
+            clicking on the calendar in the floating menu on the right.
           </div>
           <ContactForm />
         </div>

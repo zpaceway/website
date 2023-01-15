@@ -31,7 +31,7 @@ const ZpacewaySection = ({
         className={`flex flex-col gap-8 w-full ${fullWidth ? "" : "max-w-lg"}`}
       >
         <div className="text-4xl font-bold">
-          <span className="border-b-lime-500 border-b-4">{title}</span>
+          <span className="border-b-emerald-500 border-b-4">{title}</span>
         </div>
         <div className="flex flex-col gap-8">{children}</div>
       </div>

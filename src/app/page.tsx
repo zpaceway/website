@@ -44,9 +44,9 @@ export default function Home() {
       <div className="max-w-5xl flex flex-col w-full gap-32">
         <div className="flex w-full text-3xl">
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="font-light text-white border-b-4 border-lime-400">
+            <div className="font-light text-white border-b-4 border-emerald-400">
               <span className="text-lg">alexandro</span>
-              <span className="font-bold text-lime-400">TAPIA</span>
+              <span className="font-bold text-emerald-400">TAPIA</span>
             </div>
             <div className="flex">
               <div
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
         <div className="flex items-center flex-wrap gap-32">
           <div className="relative w-11/12 max-w-sm aspect-square rounded-full">
-            <div className="absolute w-[110%] h-[110%] border-8 border-lime-400 -bottom-1 -left-1 rounded-full"></div>
+            <div className="absolute w-[110%] h-[110%] border-8 border-emerald-400 -bottom-1 -left-1 rounded-full"></div>
             <Image
               src="/picture.jpeg"
               width={600}
@@ -84,7 +84,8 @@ export default function Home() {
             <div className="absolute w-full h-full bg-black bg-opacity-40 rounded-full"></div>
           </div>
           <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold lg:-ml-72 -mt-72 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
-            Hi there! I am a <span className="text-lime-400">full stack </span>
+            Hi there! I am a{" "}
+            <span className="text-emerald-400">full stack </span>
             developer
           </div>
         </div>
