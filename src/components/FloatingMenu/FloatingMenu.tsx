@@ -6,6 +6,7 @@ import { BsFacebook } from "react-icons/bs";
 import { FaCalendarAlt } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import { PopupButton } from "react-calendly";
+import FloatingMenuButton from "./FloatingMenuButton";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
@@ -47,7 +48,7 @@ const FloatingMenu = () => {
   return (
     <div className="fixed flex justify-center items-end overflow-hidden bottom-0 left-0 p-4 right-0 pointer-events-none z-20">
       <div className="w-full max-w-5xl flex flex-col items-end gap-2">
-        <div className="cursor-pointer p-1 text-violet-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6">
+        <FloatingMenuButton color="violet-500">
           <div className="relative">
             <FaCalendarAlt />
             <div className="absolute bottom-0 left-0 right-0 top-0 opacity-0">
@@ -58,27 +59,30 @@ const FloatingMenu = () => {
               />
             </div>
           </div>
-        </div>
-        <div
+        </FloatingMenuButton>
+
+        <FloatingMenuButton
+          color="blue-500"
           onClick={() =>
             window.open("https://www.facebook.com/alexandrotapiaflores")
           }
-          className="cursor-pointer p-1 text-blue-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6"
         >
           <BsFacebook />
-        </div>
-        <div
+        </FloatingMenuButton>
+
+        <FloatingMenuButton
+          color="green-500"
           onClick={() => window.open("https://wa.me/593998775709")}
-          className="cursor-pointer p-1 text-green-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6"
         >
           <IoLogoWhatsapp />
-        </div>
-        <div
+        </FloatingMenuButton>
+
+        <FloatingMenuButton
+          color="red-500"
           onClick={() => setShowYoutubePlayer(true)}
-          className="cursor-pointer p-1 text-red-500 bg-white rounded-md pointer-events-auto text-4xl hover:rotate-6"
         >
           <SiYoutubemusic />
-        </div>
+        </FloatingMenuButton>
 
         {showYoutubePlayer && (
           <div

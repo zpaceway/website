@@ -9,10 +9,12 @@ import jobs from "@/data/jobs";
 import TechnologyButton from "@/components/TechnologyButton";
 import FloatingMenu from "@/components/FloatingMenu";
 import ZpacewaySection from "@/components/ZpacewaySection";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
+
   const [technologySearchWithSalt, setTechnologySearchWithSalt] = useState("");
   const [technologyIdLoading, setTechnologyIdLoading] = useState("");
 
@@ -56,17 +58,17 @@ export default function Home() {
   }, [router, technologyIdLoading]);
 
   return (
-    <div className="w-full h-full bg-zinc-900 text-white flex justify-center items-center p-4 font-sans">
+    <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-4 font-sans">
       <div key={`query-${technologySearchWithSalt}`} className="fixed z-30">
         <div className="gcse-searchresults-only"></div>
       </div>
       <FloatingMenu />
 
       <div className="max-w-5xl flex flex-col w-full gap-32">
-        <div className="flex w-full text-2xl">
+        <div className="flex w-full text-3xl">
           <div className="flex items-center gap-4 flex-wrap">
-            <div className="font-light text-gray-100">
-              <span className="text-xl">alexandro</span>
+            <div className="font-light text-white border-b-4 border-lime-400">
+              <span className="text-lg">alexandro</span>
               <span className="font-bold text-lime-400">TAPIA</span>
             </div>
             <div className="flex gap-2">
@@ -196,46 +198,10 @@ export default function Home() {
               <span className="text-lime-400 font-bold">meeting</span> by
               clicking on the calendar in the floating menu on the right.
             </div>
-            <form className="bg-gradient-to-r from-zinc-800 to-zinc-900 w-full shadow-md rounded p-4 flex flex-col gap-4">
-              <div>
-                <label className="block text-white text-sm font-bold mb-1">
-                  Name
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block text-white text-sm font-bold mb-1">
-                  Email
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block text-white text-sm font-bold mb-1">
-                  Message
-                </label>
-                <textarea
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                  rows={8}
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-lime-400 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
-                  type="button"
-                >
-                  Send
-                </button>
-              </div>
-            </form>
+            <ContactForm />
           </div>
         </ZpacewaySection>
-        <div className="h-80"></div>
+        <div className="h-40"></div>
       </div>
     </div>
   );
