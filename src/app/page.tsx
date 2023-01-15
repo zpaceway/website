@@ -12,13 +12,22 @@ import ZpacewaySection from "@/components/ZpacewaySection";
 import useHomeSections from "./useHomeSections";
 import accounts from "@/constants/accounts";
 import { CgSpinner } from "react-icons/cg";
+import { useCallback } from "react";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+import { Container, Engine } from "tsparticles-engine";
 
 export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sections = useHomeSections();
   const [isPageLoading, setIsPageLoading] = useState(true);
-  const particlesInitialized = useRef(false);
+
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container?: Container) => {}, []);
 
   const [technologySearchWithSalt, setTechnologySearchWithSalt] = useState("");
 
@@ -51,15 +60,6 @@ export default function Home() {
     };
     notifyNewVisitor();
     setIsPageLoading(false);
-    if (!particlesInitialized.current) {
-      const Particles = require("./particles");
-      Particles.init({
-        maxParticles: 2000,
-        selector: ".background",
-        color: "#34d399",
-      });
-      particlesInitialized.current = true;
-    }
   }, []);
 
   return (
@@ -107,7 +107,53 @@ export default function Home() {
         <div className="flex items-center flex-wrap gap-32">
           <div className="relative w-11/12 max-w-sm aspect-square rounded-full">
             <div className="absolute w-[110%] h-[110%] -bottom-1 -left-1 rounded-full overflow-hidden">
-              <canvas className="background w-full h-full z-10"></canvas>
+              <Particles
+                id="tsparticles"
+                className="overflow-hidden w-full h-full"
+                init={particlesInit}
+                loaded={particlesLoaded}
+                options={{
+                  fullScreen: false,
+                  fpsLimit: 120,
+                  interactivity: {
+                    events: {
+                      resize: true,
+                    },
+                  },
+                  particles: {
+                    color: {
+                      value: "#34d399",
+                    },
+                    move: {
+                      direction: "none",
+                      enable: true,
+                      outModes: {
+                        default: "bounce",
+                      },
+                      random: false,
+                      speed: 1,
+                      straight: false,
+                    },
+                    number: {
+                      density: {
+                        enable: true,
+                        area: 800,
+                      },
+                      value: 1000,
+                    },
+                    opacity: {
+                      value: 1,
+                    },
+                    shape: {
+                      type: "circle",
+                    },
+                    size: {
+                      value: { min: 2, max: 12 },
+                    },
+                  },
+                  detectRetina: true,
+                }}
+              />
             </div>
             <Image
               src="/picture.jpeg"
