@@ -35,7 +35,7 @@ export default function Home() {
   }, [searchParams, router]);
 
   return (
-    <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-4 font-sans">
+    <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-4 font-sans overflow-x-hidden">
       <div key={`query-${technologySearchWithSalt}`} className="fixed z-30">
         <div className="gcse-searchresults-only"></div>
       </div>
@@ -70,11 +70,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex items-center flex-wrap gap-12">
-          <div className="relative w-full max-w-sm aspect-square rounded-full">
-            <div className="absolute w-[16%] h-[16%] bg-lime-400 -top-[8%] left-[8%] rounded-full"></div>
-            <div className="absolute w-[12%] h-[12%] bg-lime-400 -top-[11.5%] left-[26%] rounded-full"></div>
-            <div className="absolute w-[9%] h-[9%] bg-lime-400 -top-[11%] left-[41%] rounded-full"></div>
+        <div className="flex items-center flex-wrap gap-32">
+          <div className="relative w-11/12 max-w-sm aspect-square rounded-full">
+            <div className="absolute w-[110%] h-[110%] border-8 border-lime-400 -bottom-1 -left-1 rounded-full"></div>
             <Image
               src="/picture.jpeg"
               width={600}
@@ -83,9 +81,9 @@ export default function Home() {
               className="absolute object-cover aspect-square rounded-full"
               priority
             />
-            <div className="absolute w-full h-full bg-black bg-opacity-50 rounded-full"></div>
+            <div className="absolute w-full h-full bg-black bg-opacity-40 rounded-full"></div>
           </div>
-          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-40 lg:mt-0 lg:-ml-32 xs:text-6xl max-w-[40rem]">
+          <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold lg:-ml-72 -mt-72 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
             Hi there! I am a <span className="text-lime-400">full stack </span>
             developer
           </div>
