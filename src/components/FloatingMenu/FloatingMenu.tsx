@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { SiYoutubemusic } from "react-icons/si";
 import { BsFacebook } from "react-icons/bs";
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaTelegram } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import { PopupButton } from "react-calendly";
 import FloatingMenuButton from "./FloatingMenuButton";
+import accounts from "@/constants/accounts";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
@@ -53,7 +54,7 @@ const FloatingMenu = () => {
             <FaCalendarAlt />
             <div className="absolute bottom-0 left-0 right-0 top-0 opacity-0">
               <PopupButton
-                url="https://calendly.com/zpaceway/30min"
+                url={accounts.calendly}
                 rootElement={bodyElement}
                 text="ca"
               />
@@ -63,18 +64,23 @@ const FloatingMenu = () => {
 
         <FloatingMenuButton
           color="text-blue-500"
-          onClick={() =>
-            window.open("https://www.facebook.com/alexandrotapiaflores")
-          }
+          onClick={() => window.open(accounts.facebook)}
         >
           <BsFacebook />
         </FloatingMenuButton>
 
         <FloatingMenuButton
           color="text-green-500"
-          onClick={() => window.open("https://wa.me/593998775709")}
+          onClick={() => window.open(accounts.whatsapp)}
         >
           <IoLogoWhatsapp />
+        </FloatingMenuButton>
+
+        <FloatingMenuButton
+          color="text-blue-400"
+          onClick={() => window.open(accounts.telegram)}
+        >
+          <FaTelegram />
         </FloatingMenuButton>
 
         <FloatingMenuButton

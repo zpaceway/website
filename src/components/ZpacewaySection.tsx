@@ -40,3 +40,4 @@ const ZpacewaySection = ({
 };
 
 export default ZpacewaySection;
+export type { Props as ZpacewaySectionProps };

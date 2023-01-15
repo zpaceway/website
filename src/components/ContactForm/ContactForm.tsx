@@ -47,7 +47,7 @@ const ContactForm = () => {
 
   return (
     <form
-      className="bg-gradient-to-r from-zinc-800 to-neutral-800 w-full rounded p-4 flex flex-col gap-4"
+      className="bg-neutral-800 w-full rounded p-4 flex flex-col gap-4"
       onSubmit={handleSubmit(onSubmit)}
     >
       {showContactFormResultModal && (
