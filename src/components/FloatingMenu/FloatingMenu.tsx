@@ -48,7 +48,7 @@ const FloatingMenu = () => {
   return (
     <div className="fixed flex justify-center items-end overflow-hidden bottom-0 left-0 p-4 right-0 pointer-events-none z-20">
       <div className="w-full max-w-5xl flex flex-col items-end gap-2">
-        <FloatingMenuButton color="violet-500">
+        <FloatingMenuButton color="text-violet-500">
           <div className="relative">
             <FaCalendarAlt />
             <div className="absolute bottom-0 left-0 right-0 top-0 opacity-0">
@@ -62,7 +62,7 @@ const FloatingMenu = () => {
         </FloatingMenuButton>
 
         <FloatingMenuButton
-          color="blue-500"
+          color="text-blue-500"
           onClick={() =>
             window.open("https://www.facebook.com/alexandrotapiaflores")
           }
@@ -71,14 +71,14 @@ const FloatingMenu = () => {
         </FloatingMenuButton>
 
         <FloatingMenuButton
-          color="green-500"
+          color="text-green-500"
           onClick={() => window.open("https://wa.me/593998775709")}
         >
           <IoLogoWhatsapp />
         </FloatingMenuButton>
 
         <FloatingMenuButton
-          color="red-500"
+          color="text-red-500"
           onClick={() => setShowYoutubePlayer(true)}
         >
           <SiYoutubemusic />
