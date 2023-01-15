@@ -10,7 +10,7 @@ const TechnologyButton = ({ onClick, children, loading }: Props) => {
   return (
     <button
       onClick={onClick}
-      className="text-sm relative px-2 flex items-center justify-center text-white border-white border hover:bg-white hover:text-black rounded-sm font-mono"
+      className="text-sm relative px-2 flex items-center justify-center text-white border-lime-400 border hover:bg-white hover:text-black rounded-sm"
     >
       <div className={`${loading ? "opacity-0" : "opacity-1"}`}>{children}</div>
       {loading && <CgSpinner className="animate-spin absolute" />}
