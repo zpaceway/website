@@ -10,11 +10,13 @@ import FloatingMenu from "@/components/FloatingMenu";
 import ZpacewaySection from "@/components/ZpacewaySection";
 import useHomeSections from "./useHomeSections";
 import accounts from "@/constants/accounts";
+import { CgSpinner } from "react-icons/cg";
 
 export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sections = useHomeSections();
+  const [isPageLoading, setIsPageLoading] = useState(true);
 
   const [technologySearchWithSalt, setTechnologySearchWithSalt] = useState("");
 
@@ -33,6 +35,18 @@ export default function Home() {
       setTechnologySearchWithSalt(`${searchString}-${salt}`);
     }
   }, [searchParams, router]);
+
+  useEffect(() => {
+    setIsPageLoading(false);
+  }, []);
+
+  if (isPageLoading) {
+    return (
+      <div className="bg-neutral-900 fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+        <CgSpinner className="animate-spin text-emerald-400 text-6xl" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-4 font-sans overflow-x-hidden">

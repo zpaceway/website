@@ -84,7 +84,7 @@ const useHomeSections = () => {
       align: "right",
       fullWidth: false,
       children: (
-        <div>
+        <div className="flex flex-col gap-8">
           <div>
             After that long and boring introduction up there 😴, {"let's "}
             jump to the good part. I have about 8+ years of experience in the
