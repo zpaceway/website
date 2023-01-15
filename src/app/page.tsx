@@ -67,7 +67,7 @@ export default function Home() {
           <div className="flex items-center gap-4 flex-wrap">
             <div className="font-light text-gray-100">
               <span className="text-xl">alexandro</span>
-              <span className="font-bold text-rose-400">TAPIA</span>
+              <span className="font-bold text-lime-400">TAPIA</span>
             </div>
             <div className="flex gap-2">
               <div
@@ -100,7 +100,7 @@ export default function Home() {
             />
           </div>
           <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold -mt-32 lg:mt-0 lg:-ml-24 xs:text-6xl max-w-[40rem]">
-            Hi there! I am a <span className="text-rose-400">full stack </span>
+            Hi there! I am a <span className="text-lime-400">full stack </span>
             developer
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
             school in Visual Basic and I simply feel in love with coding. In the
             university my passion for technology lead me to study Mechatronics
             Engineering in{" "}
-            <span className="text-rose-400 font-bold">
+            <span className="text-lime-400 font-bold">
               Universidad de las Fuerzas Armadas
             </span>{" "}
             in Ecuador. While studying I had the chance of working part time as
@@ -162,7 +162,7 @@ export default function Home() {
                   <div>
                     <div className="font-bold text-xl">
                       {job.company}
-                      <span className="text-rose-400"> {job.period}</span>
+                      <span className="text-lime-400"> {job.period}</span>
                     </div>
                     <div>{job.description}</div>
                   </div>
@@ -193,7 +193,7 @@ export default function Home() {
             <div>
               Feel free to contact me and {"let's"} do great things together!
               You can also schedule a{" "}
-              <span className="text-rose-400 font-bold">meeting</span> by
+              <span className="text-lime-400 font-bold">meeting</span> by
               clicking on the calendar in the floating menu on the right.
             </div>
             <form className="bg-gradient-to-r from-zinc-800 to-zinc-900 w-full shadow-md rounded p-4 flex flex-col gap-4">
@@ -226,7 +226,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between">
                 <button
-                  className="bg-rose-400 hover:bg-rose-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
+                  className="bg-lime-400 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
                   type="button"
                 >
                   Send
