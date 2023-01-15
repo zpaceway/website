@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { HiDocumentText } from "react-icons/hi";
 
 import jobs from "@/data/jobs";
 import TechnologyButton from "@/components/TechnologyButton";
@@ -66,12 +67,12 @@ export default function Home() {
 
       <div className="max-w-5xl flex flex-col w-full gap-32">
         <div className="flex w-full text-3xl">
-          <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             <div className="font-light text-white border-b-4 border-lime-400">
               <span className="text-lg">alexandro</span>
               <span className="font-bold text-lime-400">TAPIA</span>
             </div>
-            <div className="flex gap-2">
+            <div className="flex">
               <div
                 className="cursor-pointer"
                 onClick={() => window.open("https://github.com/zpaceway")}
@@ -85,6 +86,14 @@ export default function Home() {
                 }
               >
                 <AiFillLinkedin />
+              </div>
+              <div
+                className="cursor-pointer"
+                onClick={() =>
+                  window.open("https://link.zpaceway.com/alexandro")
+                }
+              >
+                <HiDocumentText />
               </div>
             </div>
           </div>
