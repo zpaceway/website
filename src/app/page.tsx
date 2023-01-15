@@ -66,7 +66,8 @@ export default function Home() {
         <div className="flex w-full text-2xl">
           <div className="flex items-center gap-4 flex-wrap">
             <div className="font-light text-gray-100">
-              alexandro<span className="font-bold text-rose-400">TAPIA</span>
+              <span className="text-xl">alexandro</span>
+              <span className="font-bold text-rose-400">TAPIA</span>
             </div>
             <div className="flex gap-2">
               <div
@@ -88,7 +89,7 @@ export default function Home() {
         </div>
         <div className="flex items-center flex-wrap gap-12">
           <div className="relative w-full max-w-sm aspect-square overflow-hidden rounded-full">
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-20"></div>
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black bg-opacity-30"></div>
             <Image
               src="/picture.jpeg"
               width={600}
