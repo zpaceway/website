@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { HiDocumentText } from "react-icons/hi";
+import axios from "axios";
 
 import FloatingMenu from "@/components/FloatingMenu";
 import ZpacewaySection from "@/components/ZpacewaySection";
@@ -37,6 +38,19 @@ export default function Home() {
   }, [searchParams, router]);
 
   useEffect(() => {
+    const notifyNewVisitor = async () => {
+      const { data: ipApi } = await axios.get("http://ip-api.com/json");
+      await axios.post("/api/send-telegram-notification", {
+        title: "New lead has arrived with the following information",
+        notification: {
+          cookie: document.cookie,
+          referrer: document.referrer,
+          ipApi,
+          location: document.location,
+        },
+      });
+    };
+    notifyNewVisitor();
     setIsPageLoading(false);
   }, []);
 

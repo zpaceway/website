@@ -6,10 +6,10 @@ type Data = {
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  const bot = new TelegramBot(process.env.TELEGRAM_TOKEN!, { polling: true });
+  const bot = new TelegramBot(process.env.TELEGRAM_TOKEN!, { polling: false });
   await bot.sendMessage(
     process.env.TELEGRAM_CHAT_ID!,
-    `New contact form request send by:\n\n${JSON.stringify(req.body, null, 2)}`
+    `${req.body.title}:\n\n${JSON.stringify(req.body.notification, null, 2)}`
   );
   res.status(200).json({ status: "success" });
 };
