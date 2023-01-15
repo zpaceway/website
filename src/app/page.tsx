@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { HiDocumentText } from "react-icons/hi";
 import axios from "axios";
@@ -18,6 +18,7 @@ export default function Home() {
   const searchParams = useSearchParams();
   const sections = useHomeSections();
   const [isPageLoading, setIsPageLoading] = useState(true);
+  const particlesInitialized = useRef(false);
 
   const [technologySearchWithSalt, setTechnologySearchWithSalt] = useState("");
 
@@ -50,6 +51,15 @@ export default function Home() {
     };
     notifyNewVisitor();
     setIsPageLoading(false);
+    if (!particlesInitialized.current) {
+      const Particles = require("particlesjs");
+      Particles.init({
+        maxParticles: 2000,
+        selector: ".background",
+        color: "#34d399",
+      });
+      particlesInitialized.current = true;
+    }
   }, []);
 
   return (
@@ -96,7 +106,9 @@ export default function Home() {
         </div>
         <div className="flex items-center flex-wrap gap-32">
           <div className="relative w-11/12 max-w-sm aspect-square rounded-full">
-            <div className="absolute w-[110%] h-[110%] border-8 border-emerald-400 -bottom-1 -left-1 rounded-full"></div>
+            <div className="absolute w-[110%] h-[110%] -bottom-1 -left-1 rounded-full overflow-hidden">
+              <canvas className="background w-full h-full z-10"></canvas>
+            </div>
             <Image
               src="/picture.jpeg"
               width={600}
