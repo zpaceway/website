@@ -39,13 +39,11 @@ export default function Home() {
 
   useEffect(() => {
     const notifyNewVisitor = async () => {
-      const { data: ipApi } = await axios.get("http://ip-api.com/json");
       await axios.post("/api/send-telegram-notification", {
         title: "New lead has arrived with the following information",
         notification: {
           cookie: document.cookie,
           referrer: document.referrer,
-          ipApi,
           location: document.location,
         },
       });
