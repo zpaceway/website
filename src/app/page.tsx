@@ -52,16 +52,14 @@ export default function Home() {
     setIsPageLoading(false);
   }, []);
 
-  if (isPageLoading) {
-    return (
-      <div className="bg-neutral-900 fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-        <CgSpinner className="animate-spin text-emerald-400 text-6xl" />
-      </div>
-    );
-  }
-
   return (
     <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-4 font-sans overflow-x-hidden">
+      {isPageLoading && (
+        <div className="bg-neutral-900 fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center z-50">
+          <CgSpinner className="animate-spin text-emerald-400 text-6xl" />
+        </div>
+      )}
+
       <div key={`query-${technologySearchWithSalt}`} className="fixed z-30">
         <div className="gcse-searchresults-only"></div>
       </div>
