@@ -36,10 +36,19 @@ const ContactForm = () => {
 
   const onSubmit = async (data: ContactFormSchemaType) => {
     try {
-      await axios.post("/api/send-telegram-notification", {
-        title: "New contact form request sent by",
-        notification: data,
-      });
+      await axios.post(
+        "/api/send-telegram-notification",
+        {
+          title: "New contact form request sent by",
+          notification: {
+            ...data,
+            location: { ...document.location, referrer: document.referrer },
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setContactFormSentSuccessfully(true);
       reset();
     } catch (error) {

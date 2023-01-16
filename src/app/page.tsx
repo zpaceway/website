@@ -49,14 +49,20 @@ export default function Home() {
 
   useEffect(() => {
     const notifyNewVisitor = async () => {
-      await axios.post("/api/send-telegram-notification", {
-        title: "New lead has arrived with the following information",
-        notification: {
-          cookie: document.cookie,
-          referrer: document.referrer,
-          location: document.location,
-        },
-      });
+      await axios
+        .post(
+          "/api/send-telegram-notification",
+          {
+            title: "New lead has arrived with the following information",
+            notification: {
+              location: { ...document.location, referrer: document.referrer },
+            },
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .catch((err) => console.log(err));
     };
     notifyNewVisitor();
     setIsPageLoading(false);
