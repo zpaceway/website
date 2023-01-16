@@ -145,7 +145,7 @@ const useHomeSections = () => {
         <div className="flex flex-col w-full gap-1 text-xs">
           <Carousel>
             {certificates.map((certificate) => (
-              <div>
+              <div key={`certificate-${certificate}`}>
                 <img src={certificate} />
               </div>
             ))}
