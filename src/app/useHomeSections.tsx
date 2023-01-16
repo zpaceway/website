@@ -1,10 +1,12 @@
 import ContactForm from "@/components/ContactForm";
 import TechnologyButton from "@/components/TechnologyButton";
 import { ZpacewaySectionProps } from "@/components/ZpacewaySection";
+import certificates from "@/constants/certificates";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import jobs from "../constants/jobs";
+import { Carousel } from "react-responsive-carousel";
 
 const useHomeSections = () => {
   const router = useRouter();
@@ -136,8 +138,24 @@ const useHomeSections = () => {
       ),
     },
     {
-      title: "Contact",
+      title: "Certificates",
       align: "center",
+      fullWidth: false,
+      children: (
+        <div className="flex flex-col w-full gap-1 text-xs">
+          <Carousel>
+            {certificates.map((certificate) => (
+              <div>
+                <img src={certificate} />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      ),
+    },
+    {
+      title: "Contact",
+      align: "left",
       fullWidth: false,
       children: (
         <div className="flex flex-col w-full text-left gap-4">

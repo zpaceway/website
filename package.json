@@ -26,6 +26,7 @@
     "react-icons": "^4.7.1",
     "react-particles": "^2.7.1",
     "react-player": "^2.11.0",
+    "react-responsive-carousel": "^3.2.23",
     "request-ip": "^3.3.0",
     "sass": "^1.57.1",
     "tsparticles": "^2.7.1",
