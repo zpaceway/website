@@ -8,9 +8,8 @@ import axios from "axios";
 
 import FloatingMenu from "@/components/FloatingMenu";
 import ZpacewaySection from "@/components/ZpacewaySection";
-import useHomeSections from "./useHomeSections";
+import useHomeSections from "../hooks/useHomeSections";
 import accounts from "@/constants/accounts";
-import { CgSpinner } from "react-icons/cg";
 import PictureParticles from "@/components/PictureParticles";
 import Link from "next/link";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -108,7 +107,9 @@ export default function Home() {
               {section.children}
             </ZpacewaySection>
           ))}
-          <div className="h-40"></div>
+          <div className="h-20 flex flex-col justify-end items-center">
+            © Zpaceway Companies
+          </div>
         </div>
       </div>
     </div>
