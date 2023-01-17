@@ -76,7 +76,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex items-center flex-wrap gap-32">
+          <div className="flex items-start flex-col lg:flex-row lg:items-center">
             <div className="relative w-11/12 max-w-sm aspect-square rounded-full">
               <div className="absolute w-[110%] h-[110%] -bottom-1 -left-1 rounded-full overflow-hidden">
                 <PictureParticles />
@@ -91,7 +91,7 @@ export default function Home() {
               />
               <div className="absolute w-full h-full bg-black bg-opacity-20 rounded-full"></div>
             </div>
-            <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold lg:-ml-72 -mt-72 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
+            <div className="text-4xl ml-0 z-10 m-0 font-bold lg:-ml-40 -mt-16 xs:-mt-32 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
               Hi there! I am a{" "}
               <span className="text-emerald-400">full stack </span>
               developer
@@ -107,7 +107,7 @@ export default function Home() {
               {section.children}
             </ZpacewaySection>
           ))}
-          <div className="h-20 flex flex-col justify-end items-center">
+          <div className="h-20 flex flex-col justify-end items-center font-bold">
             © Zpaceway Companies
           </div>
         </div>

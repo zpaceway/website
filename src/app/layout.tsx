@@ -7,7 +7,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="sm:text-[14px] md:text-[16px] lg:text-[18px] xl[20px] 2xl:text-[22px]"
+    >
       <head />
       <body>{children}</body>
     </html>

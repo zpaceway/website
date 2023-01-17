@@ -76,7 +76,7 @@ const ContactForm = () => {
           {...register("name")}
         />
         {errors.name && (
-          <div className="text-emerald-500 text-sm">{errors.name.message}</div>
+          <div className="text-emerald-400 text-sm">{errors.name.message}</div>
         )}
       </div>
       <div>
@@ -87,7 +87,7 @@ const ContactForm = () => {
           {...register("email")}
         />
         {errors.email && (
-          <div className="text-emerald-500 text-sm">{errors.email.message}</div>
+          <div className="text-emerald-400 text-sm">{errors.email.message}</div>
         )}
       </div>
       <div>
@@ -100,7 +100,7 @@ const ContactForm = () => {
           {...register("message")}
         />
         {errors.message && (
-          <div className="text-emerald-500 text-sm">
+          <div className="text-emerald-400 text-sm">
             {errors.message.message}
           </div>
         )}

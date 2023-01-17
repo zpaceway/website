@@ -26,7 +26,7 @@ const PictureParticles = () => {
         },
         particles: {
           color: {
-            value: "#34d399",
+            value: "#5eead4",
           },
           move: {
             direction: "none",

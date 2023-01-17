@@ -7,12 +7,12 @@ export default function Head() {
 
       <meta
         name="theme-color"
-        content="#6ee7b7"
+        content="#5eead4"
         media="(prefers-color-scheme: light)"
       />
       <meta
         name="theme-color"
-        content="#6ee7b7"
+        content="#5eead4"
         media="(prefers-color-scheme: dark)"
       />
 

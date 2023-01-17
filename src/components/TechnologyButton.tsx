@@ -12,7 +12,7 @@ const TechnologyButton = ({ children }: Props) => {
         .replace(/\+/g, "%2B")
         .replace(/ /g, "+")}`}
     >
-      <button className="text-sm relative px-2 flex items-center justify-center text-white border-emerald-200 border hover:bg-emerald-500 rounded-sm">
+      <button className="text-sm relative px-2 flex items-center justify-center text-white border-emerald-200 border hover:bg-emerald-400 rounded-sm">
         <div>{children}</div>
       </button>
     </Link>

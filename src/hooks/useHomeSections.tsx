@@ -128,8 +128,8 @@ const useHomeSections = () => {
             {certificates.map((certificate) => (
               <div key={`certificate-${certificate}`}>
                 <Image
-                  width={400}
-                  height={200}
+                  width={600}
+                  height={400}
                   src={certificate}
                   priority
                   alt={`certificate-${certificate}`}
