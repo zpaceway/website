@@ -91,7 +91,7 @@ export default function Home() {
               />
               <div className="absolute w-full h-full bg-black bg-opacity-20 rounded-full"></div>
             </div>
-            <div className="text-4xl ml-0 z-10 m-0 font-bold lg:-ml-40 -mt-16 xs:-mt-32 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
+            <div className="text-5xl ml-0 z-10 m-0 font-bold lg:-ml-40 -mt-16 xs:-mt-32 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
               Hi there! I am a{" "}
               <span className="text-emerald-400">full stack </span>
               developer
