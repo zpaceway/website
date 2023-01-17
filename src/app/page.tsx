@@ -50,7 +50,7 @@ export default function Home() {
           isPageLoading ? "hidden" : "block"
         }`}
       >
-        <div className="max-w-5xl flex flex-col w-full gap-32">
+        <div className="max-w-5xl flex flex-col w-full gap-40">
           <div className="flex w-full text-3xl">
             <div className="flex items-center gap-2 flex-wrap">
               <div className="font-light text-white border-b-4 border-emerald-400">
