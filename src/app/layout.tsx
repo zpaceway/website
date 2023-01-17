@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="text-[14px] xs:text-[16px] md:text-[18px] xl[20px]"
+      className="text-[14px] xs:text-[16px] md:text-[18px] xl:text-[20px]"
     >
       <head />
       <body>{children}</body>
