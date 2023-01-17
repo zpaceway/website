@@ -1,20 +1,21 @@
-import { CgSpinner } from "react-icons/cg";
+import Link from "next/link";
 
 interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-  loading: boolean;
+  children: string;
 }
 
-const TechnologyButton = ({ onClick, children, loading }: Props) => {
+const TechnologyButton = ({ children }: Props) => {
   return (
-    <button
-      onClick={onClick}
-      className="text-sm relative px-2 flex items-center justify-center text-white border-emerald-200 border hover:bg-emerald-500 rounded-sm"
+    <Link
+      target="_blank"
+      href={`https://www.google.com/search?q=${children
+        .replace(/\+/g, "%2B")
+        .replace(/ /g, "+")}`}
     >
-      <div className={`${loading ? "opacity-0" : "opacity-1"}`}>{children}</div>
-      {loading && <CgSpinner className="animate-spin absolute" />}
-    </button>
+      <button className="text-sm relative px-2 flex items-center justify-center text-white border-emerald-200 border hover:bg-emerald-500 rounded-sm">
+        <div>{children}</div>
+      </button>
+    </Link>
   );
 };
 

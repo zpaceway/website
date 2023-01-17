@@ -3,38 +3,10 @@ import TechnologyButton from "@/components/TechnologyButton";
 import { ZpacewaySectionProps } from "@/components/ZpacewaySection";
 import certificates from "@/constants/certificates";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 import jobs from "../constants/jobs";
 import { Carousel } from "react-responsive-carousel";
 
 const useHomeSections = () => {
-  const router = useRouter();
-  const [technologyIdLoading, setTechnologyIdLoading] = useState("");
-
-  const searchBoxInterval = useRef<NodeJS.Timer>();
-
-  useEffect(() => {
-    clearInterval(searchBoxInterval.current);
-
-    if (technologyIdLoading) {
-      searchBoxInterval.current = setInterval(() => {
-        const searchBoxVisible = document.querySelector(
-          ".gsc-resultsbox-visible"
-        );
-        if (searchBoxVisible) {
-          clearInterval(searchBoxInterval.current);
-          setTechnologyIdLoading("");
-          router.push("/");
-        }
-      }, 250);
-    }
-
-    return () => {
-      clearInterval(searchBoxInterval.current);
-    };
-  }, [router, technologyIdLoading]);
-
   return [
     {
       title: "Introduction",
@@ -117,14 +89,7 @@ const useHomeSections = () => {
                     {job.technologies.map((technology) => {
                       const technologyId = `${job.company}-${technology}`;
                       return (
-                        <TechnologyButton
-                          key={technologyId}
-                          loading={technologyIdLoading === technologyId}
-                          onClick={async () => {
-                            setTechnologyIdLoading(technologyId);
-                            router.push(`/?q=${technology}`);
-                          }}
-                        >
+                        <TechnologyButton key={technologyId}>
                           {technology}
                         </TechnologyButton>
                       );
@@ -143,10 +108,32 @@ const useHomeSections = () => {
       fullWidth: false,
       children: (
         <div className="flex flex-col w-full gap-1 text-xs">
-          <Carousel>
+          <Carousel
+            renderThumbs={() =>
+              certificates.map((certificate) => (
+                <div
+                  key={`certificate-index-${certificate}`}
+                  className="w-full relative"
+                >
+                  <Image
+                    src={certificate}
+                    width={100}
+                    height={100}
+                    alt="logo"
+                  />
+                </div>
+              ))
+            }
+          >
             {certificates.map((certificate) => (
               <div key={`certificate-${certificate}`}>
-                <img src={certificate} />
+                <Image
+                  width={400}
+                  height={200}
+                  src={certificate}
+                  priority
+                  alt={`certificate-${certificate}`}
+                />
               </div>
             ))}
           </Carousel>

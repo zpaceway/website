@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { HiDocumentText } from "react-icons/hi";
 import axios from "axios";
@@ -12,40 +11,12 @@ import ZpacewaySection from "@/components/ZpacewaySection";
 import useHomeSections from "./useHomeSections";
 import accounts from "@/constants/accounts";
 import { CgSpinner } from "react-icons/cg";
-import { useCallback } from "react";
-import Particles from "react-particles";
-import { loadFull } from "tsparticles";
-import { Container, Engine } from "tsparticles-engine";
+import PictureParticles from "@/components/PictureParticles";
+import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const sections = useHomeSections();
   const [isPageLoading, setIsPageLoading] = useState(true);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container?: Container) => {}, []);
-
-  const [technologySearchWithSalt, setTechnologySearchWithSalt] = useState("");
-
-  useEffect(() => {
-    const searchString = searchParams.get("q");
-    if (searchString) {
-      const prevSearch = document.getElementById("gsearch");
-      prevSearch?.remove?.();
-      const body = document.body;
-      const gsearch = document.createElement("script");
-      gsearch.id = "gsearch";
-      gsearch.src = "https://cse.google.com/cse.js?cx=172fb6c51d1564f6e";
-      gsearch.async = true;
-      body.appendChild(gsearch);
-      const salt = (Math.random() * 1000).toString();
-      setTechnologySearchWithSalt(`${searchString}-${salt}`);
-    }
-  }, [searchParams, router]);
 
   useEffect(() => {
     const notifyNewVisitor = async () => {
@@ -69,16 +40,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-4 font-sans overflow-x-hidden">
+    <div className="w-full h-full bg-neutral-900 text-white flex justify-center items-center p-8 font-sans overflow-x-hidden">
       {isPageLoading && (
         <div className="bg-neutral-900 fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center z-50">
           <CgSpinner className="animate-spin text-emerald-400 text-6xl" />
         </div>
       )}
 
-      <div key={`query-${technologySearchWithSalt}`} className="fixed z-30">
-        <div className="gcse-searchresults-only"></div>
-      </div>
       <FloatingMenu />
 
       <div className="max-w-5xl flex flex-col w-full gap-32">
@@ -89,77 +57,28 @@ export default function Home() {
               <span className="font-bold text-emerald-400">TAPIA</span>
             </div>
             <div className="flex">
-              <div
-                className="cursor-pointer"
-                onClick={() => window.open(accounts.github)}
-              >
-                <AiFillGithub />
-              </div>
-              <div
-                className="cursor-pointer"
-                onClick={() => window.open(accounts.linkedin)}
-              >
-                <AiFillLinkedin />
-              </div>
-              <div
-                className="cursor-pointer"
-                onClick={() => window.open(accounts.cv)}
-              >
-                <HiDocumentText />
-              </div>
+              <Link target="_blank" href={accounts.github}>
+                <div className="cursor-pointer">
+                  <AiFillGithub />
+                </div>
+              </Link>
+              <Link target="_blank" href={accounts.linkedin}>
+                <div className="cursor-pointer">
+                  <AiFillLinkedin />
+                </div>
+              </Link>
+              <Link target="_blank" href={accounts.cv}>
+                <div className="cursor-pointer">
+                  <HiDocumentText />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
         <div className="flex items-center flex-wrap gap-32">
           <div className="relative w-11/12 max-w-sm aspect-square rounded-full">
             <div className="absolute w-[110%] h-[110%] -bottom-1 -left-1 rounded-full overflow-hidden">
-              <Particles
-                id="tsparticles"
-                className="overflow-hidden w-full h-full"
-                init={particlesInit}
-                loaded={particlesLoaded}
-                options={{
-                  fullScreen: false,
-                  fpsLimit: 120,
-                  interactivity: {
-                    events: {
-                      resize: true,
-                    },
-                  },
-                  particles: {
-                    color: {
-                      value: "#34d399",
-                    },
-                    move: {
-                      direction: "none",
-                      enable: true,
-                      outModes: {
-                        default: "bounce",
-                      },
-                      random: false,
-                      speed: 1,
-                      straight: false,
-                    },
-                    number: {
-                      density: {
-                        enable: true,
-                        area: 800,
-                      },
-                      value: 1000,
-                    },
-                    opacity: {
-                      value: 1,
-                    },
-                    shape: {
-                      type: "circle",
-                    },
-                    size: {
-                      value: { min: 2, max: 12 },
-                    },
-                  },
-                  detectRetina: true,
-                }}
-              />
+              <PictureParticles />
             </div>
             <Image
               src="/picture.jpeg"
@@ -169,7 +88,7 @@ export default function Home() {
               className="absolute object-cover aspect-square rounded-full"
               priority
             />
-            <div className="absolute w-full h-full bg-black bg-opacity-40 rounded-full"></div>
+            <div className="absolute w-full h-full bg-black bg-opacity-20 rounded-full"></div>
           </div>
           <div className="text-4xl text-[2.5rem] ml-0 z-10 m-0 font-bold lg:-ml-72 -mt-72 lg:mt-0 xs:text-6xl max-w-[40rem] drop-shadow-lg">
             Hi there! I am a{" "}

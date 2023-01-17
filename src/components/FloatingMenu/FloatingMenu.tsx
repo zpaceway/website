@@ -1,3 +1,5 @@
+"use client";
+
 import Debouncer from "@/utils/Debouncer";
 import { useEffect, useRef, useState } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -13,7 +15,7 @@ const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const FloatingMenu = () => {
   const [showYoutubePlayer, setShowYoutubePlayer] = useState(false);
-  const [bodyElement, setBodyElement] = useState<HTMLElement>();
+  const [rootElement, setRootElement] = useState<HTMLElement>();
 
   const onScroll = useRef<() => void>();
   const debouncer = useRef(new Debouncer());
@@ -39,12 +41,8 @@ const FloatingMenu = () => {
   }, [showYoutubePlayer]);
 
   useEffect(() => {
-    setBodyElement(document.body);
+    setRootElement(document.body);
   }, []);
-
-  if (!bodyElement) {
-    return <></>;
-  }
 
   return (
     <div className="fixed flex justify-center items-end overflow-hidden bottom-0 left-0 p-4 right-0 pointer-events-none z-20">
@@ -53,11 +51,13 @@ const FloatingMenu = () => {
           <div className="relative">
             <FaCalendarAlt />
             <div className="absolute bottom-0 left-0 right-0 top-0 opacity-0">
-              <PopupButton
-                url={accounts.calendly}
-                rootElement={bodyElement}
-                text="ca"
-              />
+              {rootElement && (
+                <PopupButton
+                  url={accounts.calendly}
+                  rootElement={rootElement}
+                  text="ca"
+                />
+              )}
             </div>
           </div>
         </FloatingMenuButton>
