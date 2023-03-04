@@ -1,7 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import TechnologyButton from "@/components/TechnologyButton";
 import { ZpacewaySectionProps } from "@/components/ZpacewaySection";
-import certificates from "@/constants/certificates";
+import { getCertificates } from "@/constants/certificates";
 import Image from "next/image";
 import jobs from "../constants/jobs";
 import { Carousel } from "react-responsive-carousel";
@@ -13,21 +13,69 @@ const useHomeSections = () => {
       align: "center",
       fullWidth: true,
       children: (
-        <div className="text-left">
-          Senior Full Stack Developer, Indie Game Developer and Blockchain
-          Developer from Ecuador with experience in languages and frameworks
-          like: JavaScript (React, Next.js, Angular, AngularJS, Express,
-          Electron, Ionic, NestJS), Python (Django {">"} 2.0, Flask, Tornado{" "}
-          {">"} 2.0, Pandas, PySpark, Jinja2, MongoEngine, PyMongo), CSS - SCSS
-          (Bootstrap, Tailwind), C# (Unity, ASP.NET), MQL4 - MQL5 (Metatrader),
-          Solidity (HardHat, Ganache, Remix), Go (Gin Gonic), Rust (Rocket).
-          Designing and managing databases in MongoDB, Redis, PostgreSQL, MySQL,
-          MariaDB, Firebase RTD - Firestore. Architecting and deploying cloud
-          infrastructure in AWS, Google Cloud, Azure, Heroku, Firebase, Netlify,
-          and Vercel. Using paid and open-source technologies like Git, Postman,
-          Celery, RabbitMQ, Unity, Tiled, Krita, Visual Studio, Twilio,
-          DialogFlow, Jira, Slack, HubSpot, Zapier, Hubstaff, Bitbucket,
-          Confluence and more.
+        <div className="flex flex-col gap-4 text-left">
+          <div>
+            Senior Full Stack Developer, Indie Game Developer and Blockchain
+            Developer from Ecuador with experience in languages and frameworks
+            like: JavaScript (React, Next.js, Angular, AngularJS, Express,
+            Electron, Ionic, NestJS), Python (Django {">"} 2.0, Flask, Tornado{" "}
+            {">"} 2.0, Pandas, PySpark, Jinja2, MongoEngine, PyMongo), CSS -
+            SCSS (Bootstrap, Tailwind), C# (Unity, ASP.NET), MQL4 - MQL5
+            (Metatrader), Solidity (HardHat, Ganache, Remix), Go (Gin Gonic),
+            Rust (Rocket). Designing and managing databases in MongoDB, Redis,
+            PostgreSQL, MySQL, MariaDB, Firebase RTD - Firestore. Architecting
+            and deploying cloud infrastructure in AWS, Google Cloud, Azure,
+            Heroku, Firebase, Netlify, and Vercel. Using paid and open-source
+            technologies like Git, Postman, Celery, RabbitMQ, Unity, Tiled,
+            Krita, Visual Studio, Twilio, DialogFlow, Jira, Slack, HubSpot,
+            Zapier, Hubstaff, Bitbucket, Confluence and more.
+          </div>
+          <div>
+            Co-founder of{" "}
+            <a
+              className="text-emerald-400 font-bold"
+              href="https://kingsofbinary.com/"
+            >
+              Kings of Binary
+            </a>
+            ,{" "}
+            <a
+              className="text-emerald-400 font-bold"
+              href="https://www.youtube.com/@kingsofbinary"
+            >
+              Kings of Indices{" "}
+            </a>
+            and{" "}
+            <a
+              className="text-emerald-400 font-bold"
+              href="https://www.instagram.com/devlocalhost"
+            >
+              Localhost
+            </a>
+            , creator of{" "}
+            <a
+              className="text-emerald-400 font-bold"
+              href="https://www.npmjs.com/package/@zpaceway/react-signals"
+            >
+              react-signals
+            </a>{" "}
+            and{" "}
+            <a
+              className="text-emerald-400 font-bold"
+              href="https://www.npmjs.com/package/@zpaceway/react-boilerplate-cli"
+            >
+              react-boilerplate-cli
+            </a>
+            , co-author of the paper (main developer) “
+            <a
+              className="text-emerald-400 font-bold"
+              href="https://sci-hub.hkvisa.net/10.1007/978-3-319-95282-6_40"
+            >
+              Pose Estimation Based on Monocular Visual Odometry and Lane
+              Detection for Intelligent Vehicles
+            </a>
+            ”
+          </div>
         </div>
       ),
     },
@@ -110,7 +158,7 @@ const useHomeSections = () => {
         <div className="flex flex-col w-full gap-1 text-xs">
           <Carousel
             renderThumbs={() =>
-              certificates.map((certificate) => (
+              getCertificates().map((certificate) => (
                 <div
                   key={`certificate-index-${certificate}`}
                   className="w-full relative"
@@ -125,7 +173,7 @@ const useHomeSections = () => {
               ))
             }
           >
-            {certificates.map((certificate) => (
+            {getCertificates().map((certificate) => (
               <div key={`certificate-${certificate}`}>
                 <Image
                   width={600}
