@@ -16,7 +16,7 @@ export default function Head() {
         media="(prefers-color-scheme: dark)"
       />
 
-      <link rel="icon" href="/zpaceway.svg" />
+      <link rel="icon" href="/zpaceway.jpg" />
     </>
   );
 }
