@@ -11,8 +11,6 @@ const udemyCertificates = [
   "https://www.udemy.com/certificate/UC-0f7da458-f73e-4baa-bdfa-dcd5757dbc64/",
   "https://www.udemy.com/certificate/UC-ec3a132e-212c-44ec-b240-bfcb65e9ed1f/",
   "https://www.udemy.com/certificate/UC-c92e2e06-545e-443d-aded-c82d7e9c9a4a/",
-
-  ,
 ];
 
 const getCertificates = () => {
