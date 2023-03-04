@@ -23,6 +23,5 @@ const getCertificates = () => {
         .at(-2)}.jpg`
   );
 };
-console.log(getCertificates());
 
 export { getCertificates };
